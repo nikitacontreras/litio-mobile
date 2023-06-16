@@ -1,0 +1,18 @@
+import LanPortScanner, { LSConfig }  from 'react-native-lan-port-scanner';
+
+//Returns `LSNetworkInfo`
+ const networkInfo = await LanPortScanner.getNetworkInfo()
+
+ let config: LSConfig = {
+   networkInfo: networkInfo,
+   ports: [8080],
+   timeout: 1000, 
+   threads: 150 
+ }
+ LanPortScanner.startScan(config, (totalHosts: number, hostScanned: number) => {
+   console.log(hostScanned / totalHosts) 
+ }, (result) => {
+   console.log(result)
+ }, (results) => {
+   console.log(results)
+ })
